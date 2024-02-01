@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrollment</title>
+
+  <link rel="stylesheet" href="../static/CSS/bootstrap-5.2.2-dist/bootstrap-5.2.2-dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="../static/CSS/design.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+
+  <link rel="shortcut icon" type="image/png" href="../static/images/sjlshs_favicon.png" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <script src="../static/CSS/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+
+  <nav>
+    <div class="navbar navbar-expand-lg bg-primary sticky-top" id="home-navigation">
+      <div class="container-fluid">
+        <a href="index.html" class="navbar-brand">
+          <img src="../static/images/sjlshs_croppedV4.png" style="height: 50px; width: 50px" />
+        </a>
+        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Students
+              </a>
+              <ul class="dropdown-menu" id="drpdown-menu">
+                <li>
+                  <a class="dropdown-item" href="{% url 'enrollment' %}">Student Enrollment</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'offerings' %}">Academic Offerings</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'login' %}">Student Portal Login</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'signup'%} ">Student Portal Signup</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'organizations' %}">Organizations</a>
+            </li>
+            <li class="nav-item float-right">
+              <a class="nav-link" href="{% url 'sitemap' %}">Sitemap</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <div class="container-fluid">
+    <div class="row" id="enrollment-heading">
+      <div class="col-lg-12 col-sm-12">
+        <div class="page-banners">
+          <h1 class="display-1 p-5">Student Enrollment</h1>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container my-5">
+    <div class="row">
+      <img src="../static/images/enrollment-process.jpg" class="img-fluid mb-5">
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Enrollment Details</h3>
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action">
+            <i class="bi bi-check-circle-fill text-success"></i> Junior high-school graduates are
+            automatically qualified
+            for enrollment at San Jose-Litex Senior High School.
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">
+            <i class="bi bi-check-circle-fill text-success"></i> Students who are qualified must follow the
+            enrollment
+            guidelines and compile the necessary requirements for enrollment.
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">
+            <i class="bi bi-check-circle-fill text-success"></i> Enrollees are required to submit the
+            following:
+            <ul>
+              <li>Original and photocopy of the report card (Form 138)</li>
+              <li>Original and photocopy of the birth certificate</li>
+              <li>Two (2) recent 2x2 ID pictures</li>
+              <li>Accomplished enrolment form</li>
+            </ul>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h3>Enrollment Requirements</h3>
+        <div class="list-group">
+          <form>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="checkbox2">
+              <label class="form-check-label" for="checkbox2">
+                Original and photocopy of the report card (Form 138)
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="checkbox3">
+              <label class="form-check-label" for="checkbox3">
+                Original and photocopy of the birth certificate
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="checkbox4">
+              <label class="form-check-label" for="checkbox4">
+                Two (2) recent 2x2 ID pictures
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="checkbox5">
+              <label class="form-check-label" for="checkbox5">
+                Accomplished enrolment form
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <h2 class="mt-4">Enrollment Procedure</h2>
+      <div class="col lg-6 md-6 sm-12">
+        <div id="list-example" class="list-group">
+          <a class="list-group-item list-group-item-action" href="#list-item-1">Visit the Admission Page</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-2">Compile the necessary
+            requirements</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-3">Go to the prescribed
+            enrollment dates for
+            your grade level</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-4">Get the proof of
+            enrollment</a>
+          <a class="list-group-item list-group-item-action" href="#list-item-5">Wait for the confirmation of
+            your
+            enrollment</a>
+        </div>
+      </div>
+      <div class="col lg-6 md-6 sm-12">
+        <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example"
+          tabindex="0" style="max-height: 200px; overflow-y: scroll;">
+          <h4 id="list-item-1">Visit the Admission Page</h4>
+          <p>Go to the San Jose-Litex Senior High School website and navigate to the Admission page.
+            Read the instructions and guidelines for enrollment carefully.
+            Ensure that you meet the eligibility requirements before proceeding with
+            the enrollment process. If you have any questions or concerns, you may
+            contact the Admissions Office through the provided contact information on the website.</p>
+          <h4 id="list-item-2">Compilation of Documents</h4>
+          <p>Compile all the necessary documents for enrollment.
+            These include an original and photocopy of your report card (Form 138),
+            an original and photocopy of your birth certificate, two recent 2x2 ID pictures,
+            and the accomplished enrollment form. Ensure that all the documents are complete,
+            accurate, and up-to-date. If there are any missing or incomplete documents,
+            you will not be allowed to proceed with the enrollment process.</p>
+          <h4 id="list-item-3">Enrollment Period</h4>
+          <p>During the enrollment period, proceed to the San Jose-Litex Senior High School campus
+            and submit all the necessary documents to the Admissions Office.
+            Pay the required fees and charges, and attend any orientation sessions, if there are any.
+            Ensure that you follow all the guidelines and instructions provided by
+            the school during the enrollment process.</p>
+          <h4 id="list-item-4">Get Proof of Enrollment</h4>
+          <p>After submitting all the necessary documents and paying the required fees,
+            you will receive a proof of enrollment from the Admissions Office.
+            This may be in the form of a receipt or an official document.
+            Keep this proof of enrollment in a safe and secure place,
+            as you will need it for future transactions with the school.</p>
+          <h4 id="list-item-5">Wait for Enrollment Confirmation</h4>
+          <p>After completing the enrollment process, wait for confirmation from the
+            school that you have been officially enrolled.
+            The school will inform you of the date of the start of classes
+            and provide you with any other information that you need to know.
+            If you have any questions or concerns, you may contact the school’s
+            Admissions Office for assistance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h5 class="modal-title text-center text-white" id="staticBackdropLabel">Data Privacy Policy
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h4>Introduction</h4>
+          <p>This document outlines the data privacy policy for the Multi-information Academic Portal
+            for Students or MAPS of San Jose Litex Senior High School. MAPS is a web-based platform
+            that allows students to access various academic and administrative services, such as
+            enrollment, grades, schedule, announcements and advisories, module resources, and career
+            services.</p>
+
+          <h4>Personal and sensitive personal information</h4>
+          <p>MAPS collects, uses, stores, and discloses personal and sensitive personal information of
+            students, such as name, student number, email address, academic records, and other
+            information relevant to the provision of the services. The student portal also uses
+            cookies and other technologies to enhance the functionality and security of the
+            platform.</p>
+
+          <h4>Data privacy compliance</h4>
+          <p>MAPS processes personal and sensitive personal information in accordance with the
+            Philippine Data Privacy Act of 2012 (DPA) and its implementing rules and regulations
+            (IRR), as well as the policies and guidelines of San Jose Litex Senior High School and
+            the University of the Philippines System. MAPS respects the rights of data subjects to
+            access, correct, object, erase, or withdraw consent to the processing of their personal
+            and sensitive personal information, subject to certain limitations and conditions.</p>
+
+          <h4>Data security and access control</h4>
+          <p>MAPS implements reasonable and appropriate physical, organizational, and technical
+            measures to protect personal and sensitive personal information from unauthorized
+            access, use, modification, disclosure, or destruction. MAPS also ensures that only
+            authorized personnel have access to personal and sensitive personal information on a
+            need-to-know basis.</p>
+
+          <h4>Data sharing and transfers</h4>
+          <p>MAPS may also transfer personal and sensitive personal information to other
+            jurisdictions, subject to compliance with applicable laws and regulations.</p>
+
+          <h4>Changes to the policy</h4>
+          <p>MAPS may update this data privacy policy from time to time to reflect changes in the
+            legal or regulatory environment, or in the operations or services of the platform. MAPS
+            will notify students of any material changes through email or other means of
+            communication.</p>
+
+          <h4>Consent and responsibility</h4>
+          <p>By accessing or using MAPS, students agree to this data privacy policy and consent to the
+            processing of their personal and sensitive personal information as described herein.
+            Students are responsible for keeping their login credentials confidential and for
+            logging out of the platform after each session. Students are also encouraged to review
+            this data privacy policy periodically and to contact us if they have any questions or
+            concerns.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="staticBackdropTAC" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h5 class="modal-title text-center text-white" id="staticBackdropLabel">Terms and Conditions
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h1>Terms and Conditions of the Multi-information Academic Portal for Students (MAPS)</h1>
+          <p>Welcome to the Multi-information Academic Portal for Students (MAPS) provided by San Jose-Litex Senior
+            High School. Before using the MAPS platform, please read the following terms and conditions carefully.
+            By accessing or using the MAPS platform, you agree to be bound by these terms and conditions.</p>
+          <h2>Acceptance of Terms</h2>
+          <p>By accessing and using the MAPS platform, you acknowledge that you have read, understood, and agreed to
+            comply with these terms and conditions. If you do not agree with any of these terms, please refrain from
+            using the platform.</p>
+          <h2>User Responsibilities</h2>
+          <ol>
+            <li>You must provide accurate and complete information during the registration process.</li>
+            <li>You are responsible for maintaining the confidentiality of your account credentials and for any
+              activities conducted under your account.</li>
+            <li>You must use the MAPS platform in compliance with all applicable laws, regulations, and school
+              policies.</li>
+          </ol>
+          <h2>Intellectual Property Rights</h2>
+          <ol>
+            <li>The content, materials, and features available on the MAPS platform, including but not limited to
+              text, images, graphics, logos, and software, are protected by intellectual property laws and are the
+              property of San Jose-Litex Senior High School or its licensors.</li>
+            <li>You may not modify, copy, distribute, transmit, display, perform, reproduce, publish, license,
+              create derivative works from, transfer, or sell any information, software, products, or services
+              obtained from the MAPS platform without prior written permission from the school.</li>
+          </ol>
+          <h2>Disclaimer of Warranty</h2>
+          <ol>
+            <li>The MAPS platform is provided on an "as is" and "as available" basis. San Jose-Litex Senior High
+              School does not warrant that the platform will be error-free, uninterrupted, or secure.</li>
+            <li>San Jose-Litex Senior High School does not guarantee the accuracy, completeness, or reliability of
+              any information, content, or materials available on the MAPS platform.</li>
+          </ol>
+          <h2>Limitation of Liability</h2>
+          <ol>
+            <li>San Jose-Litex Senior High School and its affiliates shall not be liable for any direct, indirect,
+              incidental, special, or consequential damages arising out of or in connection with the use or
+              inability to use the MAPS platform.</li>
+            <li>San Jose-Litex Senior High School does not assume any responsibility for the conduct of users or
+              third parties on the platform.</li>
+          </ol>
+
+          <h2>Governing Law and Jurisdiction</h1>
+            <p>These terms and conditions shall be governed by and construed in accordance with the laws of the
+              Philippines. Any disputes arising out of or in connection with these terms and conditions shall be
+              subject to the exclusive jurisdiction of the courts located in the Philippines.</p>
+
+            <h2>Modifications</h2>
+            <p>San Jose-Litex Senior High School reserves the right to modify or amend these terms and conditions at
+              any time. The updated terms and conditions will be posted on the MAPS platform, and your continued use
+              of the platform after any modifications will constitute your acceptance of the updated terms.</p>
+
+            <p>Please note that these terms and conditions are subject to additional policies and guidelines within
+              the MAPS platform. It is recommended to review these terms regularly to stay informed of any updates.
+            </p>
+
+            <p>If you have any questions or concerns regarding these terms and conditions, please contact us at <a
+                href="mailto:sjlshs.noreply@gmail.com">sjlshs.noreply@gmail.com</a>.</p>
+
+            <p>Last updated: May 8, 2023</p>
+
+            <p>By using the MAPS platform, you signify your acceptance and agreement to these terms and conditions.
+            </p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid px-0">
+    <!-- Footer -->
+    <footer class="bg-primary text-center text-white pt-5">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <div class="row">
+
+
+          <div class="col-lg-3">
+            <img class="img-fluid rounded-circle mb-4" src="../static/images/sjlshs_croppedV4.png">
+            <p><a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdropTAC" class="text-white">Terms and
+                Conditions</a></p>
+            <p><a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="text-white">Data Privacy
+                Policy</a></p>
+          </div>
+
+          <!-- Section: Social media -->
+          <div class="col-lg-8">
+
+
+            <section class="mb-4">
+              <!-- Facebook -->
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998"
+                href="https://www.facebook.com/sanjoselitexshs" role="button"><i class="fab fa-facebook"></i></a>
+
+              <!-- Messenger -->
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee"
+                href="https://www.facebook.com/messages/t/100693405385792" role="button"><i
+                  class="fab fa-facebook-messenger"></i></a>
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Text -->
+            <section class="mb-4">
+              <p>
+                Committed to
+                providing
+                quality education to its students, SJLSHS offers a wide range of academic programs and
+                extracurricular
+                activities that promote intellectual, social, and emotional growth. With a team of highly qualified
+                and
+                dedicated educators, San Jose Litex Senior High School prepares its students for success in college
+                and
+                beyond.
+              </p>
+            </section>
+            <!-- Section: Text -->
+
+
+            <!-- Section: Links -->
+            <section class="">
+              <!--Grid row-->
+              <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+                  <h5 class="text-uppercase">Contact Us</h5>
+
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <p class="text-white">Email: litexvillageshs@gmail.com</p>
+                    </li>
+                    <li>
+                      <p class="text-white">Phone: 9548377</p>
+                    </li>
+                    <li>
+                      <p class="text-white">Registrar's Office: 09561441403</p>
+                    </li>
+                  </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+                  <h5 class="text-uppercase">School Details</h5>
+
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <p class="text-white">School ID: 342566</p>
+                    </li>
+                    <li>
+                      <p class="text-white">Address: Lot 1 Blk 9 Litex Subdivision San Jose Rodriguez Rizal</p>
+                    </li>
+                    <li>
+                      <p class="text-white">Zip Code: 1860</p>
+                    </li>
+
+                  </ul>
+                </div>
+                <!--Grid column-->
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item"
+                      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15434.386021869761!2d121.1300115!3d14.7353899!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397bb1755b32601%3A0x63f457bdaeafd655!2sSan%20Jose%20Litex%20Senior%20High%20School!5e0!3m2!1sen!2sph!4v1683509113001!5m2!1sen!2sph"
+                      style="border:0;" allowfullscreen="" loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
+                </div>
+              </div>
+              <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+
+          </div>
+        </div>
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2024 Copyright:
+        <a class="text-white" href="#">Putan Luis Gabrielle</a>
+      </div>
+      <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+  </div>
+
+
+
+
+
+  <script>
+    function checkAllBoxes() {
+      var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      var allChecked = true;
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (!checkboxes[i].checked) {
+          allChecked = false;
+          break;
+        }
+      }
+      if (allChecked) {
+        alert("Congratulations! You have checked all enrollment requirements.");
+      }
+    }
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].addEventListener('change', checkAllBoxes);
+    }
+  </script>
+
+  <script src="../static/CSS/bootstrap-5.2.2-dist/bootstrap-5.2.2-dist/js/bootstrap.bundle.js"></script>
+
+  <script>
+    $(window).scroll(function () {
+      var windowHeight = $(window).height();
+      var scrollPos = $(window).scrollTop();
+
+      $('.fade-inleft').each(function () {
+        var offsetTop = $(this).offset().top;
+        if (scrollPos > offsetTop - windowHeight + 200) {
+          $(this).addClass('animate__animated animate__fadeInLeft');
+        }
+      });
+
+      $('.fade-in').each(function () {
+        var offsetTop = $(this).offset().top;
+        if (scrollPos > offsetTop - windowHeight + 200) {
+          $(this).addClass('animate__animated animate__fadeIn');
+        }
+      });
+
+      $('.fade-inup').each(function () {
+        var offsetTop = $(this).offset().top;
+        if (scrollPos > offsetTop - windowHeight + 200) {
+          $(this).addClass('animate__animated animate__fadeInUp');
+        }
+      });
+    });
+  </script>
+</body>
+
+
+</html>
